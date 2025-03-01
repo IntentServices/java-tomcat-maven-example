@@ -13,9 +13,9 @@ pipeline {
 				}
 			}
 		}
-		stage ("Dev CD Pipeline"){
+		stage ("Dev tomcat Pipeline"){
 			steps{
-			build job : 'Dev-CD-Pipeline'
+			build job : 'dev-tomcat'
 			}
 		}
 		stage ('Deploy to Production'){
