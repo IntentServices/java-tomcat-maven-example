@@ -24,7 +24,7 @@ pipeline {
                     input message: 'Approve PRODUCTION Deployment?'
                 }
                 
-                build job : 'Declaratvie-jenkinsfile'
+                build job : 'QA-Tomcat'
             }
 
             post{
