@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('clone ') {
+            steps {
+               git credentialsId: 'gitlogin', url: 'https://github.com/IntentServices/java-tomcat-maven-example.git'
+            }
+        }
+        stage('build') {
+            steps {
+                bat 'mvn clean install'
+            }
+        }
+        stage('archive') {
+            steps {
+                  archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+            }
+        }
+        stage('Copy') {
+            steps {
+                echo 'copy'
+            }
+        }
+        stage('deploy') {
+            steps {
+                build 'dev-tomcat'
+            }
+        }
+    }
+}
